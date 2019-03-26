@@ -7,7 +7,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    int scoreTeamA = 0;
+    private int scoreTeamA = 0;
+    private int scoreTeamB = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,20 +17,39 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /*
-     * This is called when one of the buttons is clicked. It sets the @member scoreTeamA's value to the button's
+     * This is called when one of the buttons of Team A is clicked. It sets the @member scoreTeamB's value to the button's
      * corresponding value then pass it to display
      */
-    public void scorePoint(View v){
-        if(v.equals(R.id.button_3)) {
+    public void scorePointTeamA(View v) {
+
+        if (v.equals(R.id.button_3)) {
             scoreTeamA += 3;
         }
-        if(v.equals(R.id.button_2)){
+        if (v.equals(R.id.button_2)) {
             scoreTeamA += 2;
         }
-        if(v.equals(R.id.button_free)){
+        if (v.equals(R.id.button_free)) {
             scoreTeamA += 1;
         }
         displayForTeamA(scoreTeamA);
+    }
+
+    /*
+     * This is called when one of the buttons of Team B is clicked. It sets the @member scoreTeamB's value to the button's
+     * corresponding value then pass it to display
+     */
+    public void scorePointTeamB(View v) {
+
+        if (v.equals(R.id.button_3_b)) {
+            scoreTeamB += 3;
+        }
+        if (v.equals(R.id.button_2_b)) {
+            scoreTeamB += 2;
+        }
+        if (v.equals(R.id.button_free_b)) {
+            scoreTeamB += 1;
+        }
+        displayForTeamB(scoreTeamB);
     }
 
     /**
@@ -37,6 +57,14 @@ public class MainActivity extends AppCompatActivity {
      */
     public void displayForTeamA(int score) {
         TextView scoreView = (TextView) findViewById(R.id.team_a_score);
+        scoreView.setText(String.valueOf(score));
+    }
+
+    /**
+     * Displays the given scoreTeamB for Team B
+     */
+    public void displayForTeamB(int score) {
+        TextView scoreView = (TextView) findViewById(R.id.team_b_score);
         scoreView.setText(String.valueOf(score));
     }
 }
