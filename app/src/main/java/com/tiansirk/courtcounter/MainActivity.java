@@ -8,7 +8,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private int scoreTeamA = 0;
-    private int scoreTeamB = 0;
+    int scoreTeamB = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,16 @@ public class MainActivity extends AppCompatActivity {
         if (v.equals(R.id.button_free_b)) {
             scoreTeamB += 1;
         }
+        displayForTeamB(scoreTeamB);
+    }
+
+    /*
+     * Resetting points for both teams
+     */
+    public void reset(View v){
+        scoreTeamA = 0;
+        scoreTeamB = 0;
+        displayForTeamA(scoreTeamA);
         displayForTeamB(scoreTeamB);
     }
 
